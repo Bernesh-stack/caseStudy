@@ -1,13 +1,16 @@
-export interface Node {
-  id: string;
-  type: 'START' | 'TASK' | 'APPROVAL' | 'AUTOMATED' | 'END';
+import type { Node as RFNode } from 'reactflow';
+
+export type WorkflowNodeType = 'START' | 'TASK' | 'APPROVAL' | 'AUTOMATED' | 'END';
+
+export interface WorkflowNodeData {
   label: string;
-  position: { x: number; y: number };
-  data?: any;
+  type: WorkflowNodeType;
+  description?: string;
+  status?: 'pending' | 'success' | 'error';
+  // Configurable fields
+  assignee?: string;
+  deadline?: string;
+  webhookUrl?: string;
 }
 
-export interface Edge {
-  id: string;
-  source: string;
-  target: string;
-}
+export type WorkflowNode = RFNode<WorkflowNodeData>;
