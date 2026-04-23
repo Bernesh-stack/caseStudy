@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Node, Edge } from '../types';
+import type { Node, Edge } from 'reactflow';
 
 /**
  * Hook to manage workflow state
